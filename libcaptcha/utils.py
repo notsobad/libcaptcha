@@ -5,6 +5,7 @@ import tempfile
 import os
 import subprocess
 import settings
+import helpers
 
 try:
 	from cStringIO import StringIO
@@ -38,7 +39,6 @@ def captcha_image(key, text, scale=1):
 		font = ImageFont.truetype(settings.CAPTCHA_FONT_PATH, settings.CAPTCHA_FONT_SIZE * scale)
 	else:
 		font = ImageFont.load(settings.CAPTCHA_FONT_PATH)
-	#__import__('pdb').set_trace()
 	size = getsize(font, text)
 	size = (size[0] * 2, int(size[1] * 1.4))
 	if settings.CAPTCHA_BACKGROUND_COLOR == "transparent":
@@ -90,5 +90,6 @@ def captcha_image(key, text, scale=1):
 
 
 if __name__ == '__main__':
-	out = captcha_image("asdfasdfasd", sys.argv[1], 2)
+	text = helpers.random_char_challenge()[0]
+	out = captcha_image("asdfasdfasd", text, 2)
 	print out
