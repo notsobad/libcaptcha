@@ -33,7 +33,7 @@ def getsize(font, text):
 		return font.getsize(text)
 
 
-def captcha_image(key, text, scale=1):
+def captcha_image(text, scale=1):
 
 	if settings.CAPTCHA_FONT_PATH.lower().strip().endswith('ttf'):
 		font = ImageFont.truetype(settings.CAPTCHA_FONT_PATH, settings.CAPTCHA_FONT_SIZE * scale)
@@ -90,6 +90,6 @@ def captcha_image(key, text, scale=1):
 
 
 if __name__ == '__main__':
-	text = helpers.random_char_challenge()[0]
-	out = captcha_image("asdfasdfasd", text, 2)
+	text = helpers.random_char_challenge()[1]
+	out = captcha_image(text, 2)
 	print out

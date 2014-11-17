@@ -8,7 +8,8 @@ Code stealed from [django-simple-captcha](https://github.com/mbi/django-simple-c
 Usage:
 	
 	from libcaptcha.utils import captcha_image
+	from libcaptcha import helpers
 	
-	key = 'asdfawfs(*9asdfasdfaksj92_++|_]{}'
-	data = captcha_image(key, 'test', 2)
+	text = helpers.random_char_challenge()[1]
+	data = captcha_image(text, 2)
 	open('x.png', 'w').write(data)
